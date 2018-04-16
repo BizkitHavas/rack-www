@@ -73,7 +73,8 @@ module Rack
     end
 
     def prepare_url(env)
-      scheme = env['rack.url_scheme']
+      # Hard coding https as url_scheme provides incorrect scheme
+      scheme = "https"
       host, port, path, query_string = extract_host(env)
 
       if @redirect == true
