@@ -17,8 +17,7 @@ module Rack
     end
 
     def call(env)
-      host, port, path, query_string = extract_host(env)
-      if redirect?(env) && host =~ /^[^.]+\.[^.]+$/
+      if redirect?(env)
         redirect(env)
       else
         @app.call(env)
