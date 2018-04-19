@@ -77,7 +77,7 @@ module Rack
       scheme = "https"
       host, port, path, query_string = extract_host(env)
 
-      if @redirect == true
+      if @redirect == true && host =~ /^[^.]+\.[^.]+$/
         host = "://#{@subdomain}." + host
       else
         host = '://' + host
